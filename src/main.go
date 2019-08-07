@@ -1,29 +1,24 @@
 package main
 
 import (
-	"fmt"
-	"math/rand"
 	"net/http"
-	"os"
-	"strconv"
-	"strings"
-	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/Dadinel/status-http"
+	"github.com/Dadinel/status-http/port"
+	"github.com/Dadinel/status-http/status"
 )
 
 func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("", getRound).Methods("GET")
 	router.HandleFunc("/{code}", getCode).Methods("GET")
-	//http.ListenAndServe(":"+getPort(), router)
+	http.ListenAndServe(":"+port.GetPort(), router)
 }
 
 func getRound(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(getRandCode())
+	w.WriteHeader(status.GetRandCode())
 }
 
 func getCode(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(getURLCode(r))
+	w.WriteHeader(status.GetURLCode(r))
 }
