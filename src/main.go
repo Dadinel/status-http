@@ -16,9 +16,9 @@ func main() {
 }
 
 func getRound(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(status.GetRandCode())
+	w.WriteHeader(status.GetRandStatus())
 }
 
 func getCode(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(status.GetURLCode(r))
+	w.WriteHeader(status.GetURLStatus(r))
 }

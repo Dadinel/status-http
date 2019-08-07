@@ -5,6 +5,6 @@ import (
 	"strings"
 )
 
-func getPort() string {
+func GetPort() string {
 	return strings.TrimSpace(os.Getenv("PORT"))
 }
