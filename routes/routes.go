@@ -9,8 +9,8 @@ import (
 
 // SetRoutes : Define os endpoints
 func SetRoutes(router *mux.Router) {
-	router.HandleFunc("/", getRound).Methods("GET")
-	router.HandleFunc("/{code}", getCode).Methods("GET")
+	router.HandleFunc("/", getRound)
+	router.HandleFunc("/{code}", getCode)
 }
 
 func getRound(w http.ResponseWriter, r *http.Request) {
