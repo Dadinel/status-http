@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/Dadinel/status-http/port"
@@ -9,7 +10,14 @@ import (
 )
 
 func main() {
-	router := mux.NewRouter()
-	routes.SetRoutes(router)
-	http.ListenAndServe(":"+port.GetPort(), router)
+	serverPort, err := port.GetPort()
+
+	if err == nil {
+		router := mux.NewRouter()
+		routes.SetRoutes(router)
+		http.ListenAndServe(":"+port.GetPort(), router)
+	}
+	else {
+		fmt.Print(err)
+	}
 }
